@@ -5,14 +5,14 @@ This project is a search-based content aggregator using Flask for the backend an
 # Favicon
 ![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134314.png?raw=true )
 
-# First
+# Search Bar
 
 ![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134300.png?raw=true)
 
-# First
+# Resources
 ![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134211.png?raw=true)
 
-# First
+# Resources
 
 ![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134243.png?raw=true)
 
