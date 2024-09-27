@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# POC Assignment - Search and Content Aggregator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a search-based content aggregator using Flask for the backend and React for the frontend. It retrieves YouTube videos, articles/blogs, and academic papers based on a user's search query.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start` (Frontend)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the frontend React app in the development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload if you make edits.  
+You will also see any lint errors in the console.
 
-### `npm test`
+### `python app.py` (Backend)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the Flask backend server.  
+Open [http://127.0.0.1:5000/search?query=<your_query>](http://127.0.0.1:5000/search?query=example) to check the backend response.
 
-### `npm run build`
+Make sure Flask is installed, and run the following command in the terminal to start the backend:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+python app.py
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The backend will listen for requests on `http://127.0.0.1:5000/`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API Endpoints
 
-### `npm run eject`
+### `GET /search`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The `/search` endpoint accepts a query parameter and retrieves data from three sources:
+- **YouTube Videos**: Uses YouTube Data API to fetch videos related to the query.
+- **Articles/Blogs**: Uses Google Custom Search API to get related articles or blog posts.
+- **Academic Papers**: Fetches academic papers from the arXiv API.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Example Request
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+http://127.0.0.1:5000/search?query=ai
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Example Response
+
+```json
+{
+  "YouTube": [
+    {
+      "title": "Understanding AI",
+      "link": "https://www.youtube.com/watch?v=abcd1234"
+    }
+  ],
+  "Articles/Blogs": [
+    {
+      "title": "What is Artificial Intelligence?",
+      "link": "https://www.example.com/ai-article"
+    }
+  ],
+  "Academic Papers": [
+    {
+      "title": "Advancements in AI Research",
+      "link": "https://arxiv.org/abs/abcd1234"
+    }
+  ]
+}
+```
+
+## Project Structure
+
+The project consists of two parts:
+
+1. **Backend (Flask)**: Manages API requests and fetches data from YouTube, Google Custom Search, and arXiv APIs.
+   - **app.py**: Main Flask app that handles the `/search` endpoint.
+
+2. **Frontend (React)**: The user interface for querying the backend and displaying search results.
+   - **App.js**: React component that handles user input and renders the results.
+
+## Installation and Setup
+
+### Backend (Flask)
+
+1. Install the required Python packages using `pip`:
+   
+   ```bash
+   pip install flask flask-cors google-api-python-client requests
+   ```
+
+2. Set up API keys in `app.py`:
+   - YouTube API Key: Replace `'YOUR_YOUTUBE_API_KEY'` in `get_youtube_videos()` function.
+   - Google Custom Search API Key and Engine ID: Replace `'YOUR_GOOGLE_API_KEY'` and `'YOUR_SEARCH_ENGINE_ID'` in `get_articles_blogs()` function.
+
+3. Run the Flask server:
+
+   ```bash
+   python app.py
+   ```
+
+### Frontend (React)
+
+1. Install the required dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Start the React development server:
+
+   ```bash
+   npm start
+   ```
+
+3. Ensure the Flask backend is running so the frontend can fetch data from the `/search` endpoint.
+
+## Features
+
+- **YouTube Video Search**: Fetches the most viewed videos related to the query.
+- **Article and Blog Search**: Fetches articles or blog posts related to the query.
+- **Academic Paper Search**: Retrieves academic papers from arXiv.
+- **Cross-Origin Requests**: CORS is enabled to allow communication between the frontend and backend.
+- **Error Handling**: Displays appropriate messages in case of network issues or search errors.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To learn more about Flask, React, and the APIs used in this project, refer to the following documentation:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Flask Documentation](https://flask.palletsprojects.com/en/latest/)
+- [React Documentation](https://reactjs.org/)
+- [YouTube Data API](https://developers.google.com/youtube/v3)
+- [Google Custom Search API](https://developers.google.com/custom-search/v1/overview)
+- [arXiv API](https://arxiv.org/help/api)
