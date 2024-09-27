@@ -3,6 +3,16 @@
 This project is a search-based content aggregator using Flask for the backend and React for the frontend. It retrieves YouTube videos, articles/blogs, and academic papers based on a user's search query.
 
 # First
+![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134211.png?raw=true)
+
+# First
+
+![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134211.png?raw=true)
+
+# First
+![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134211.png?raw=true)
+
+# First
 
 ![Output Image](https://github.com/Chetanahazare/SearchEasy/blob/main/public/images/Screenshot%202024-09-27%20134211.png?raw=true)
 
